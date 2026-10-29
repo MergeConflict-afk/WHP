@@ -1,0 +1,25 @@
+# IDEA
+.idea/*
+*.iml
+out/
+
+# Eclipse
+.settings/
+.classpath
+.project
+.metadata/
+
+# 编译输出
+target/
+build/
+*.class
+
+# Tomcat
+work/
+temp/
+logs/
+*.log
+
+# 系统文件
+.DS_Store
+Thumbs.db
