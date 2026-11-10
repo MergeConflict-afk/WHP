@@ -17,7 +17,7 @@ import java.io.IOException;
 /**
  * Servlet Filter implementation class LoginFilter
  */
-@WebFilter("/home.jsp*")
+@WebFilter("/*")
 public class LoginFilter implements Filter {
        
     /**
@@ -52,9 +52,10 @@ public class LoginFilter implements Filter {
 		//这些路径放行，防止死循环
 		if(path.equals("/login.html")
 		        || path.equals("/login")
+		        || path.equals("/logoutservlet")
 		        || path.startsWith("/css/")
 		        || path.startsWith("/js/")
-		        || path.equals("/register.html")
+		        || path.equals("/register.jsp")
 		        || path.equals("/register")){
 
 		        // 放行：交给下一个过滤器/Servlet处理

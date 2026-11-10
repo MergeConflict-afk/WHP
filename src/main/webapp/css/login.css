@@ -44,8 +44,8 @@ body {
     outline: none;
     border-color: #409eff;
 }
-#loginBtn {
-    width: 100%;
+.common_bt{
+	width: 100%;
     height: 44px;
     background-color: #409eff;
     color: white;
@@ -54,7 +54,8 @@ body {
     font-size: 16px;
     cursor: pointer;
 }
-#loginBtn:hover {
+
+.common_bt:hover {
     background-color: #337ecc;
 }
 .register-link {

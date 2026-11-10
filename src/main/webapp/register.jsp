@@ -1,35 +1,48 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>注册结果</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>注册</title>
+    <link rel="stylesheet" href="css/login.css">
 </head>
 <body>
+<div class="login-box">
+    <h2>用户注册</h2>
+
 <%
-    // 设置编码，防止中文乱码
-    request.setCharacterEncoding("UTF-8");
-    String username = request.getParameter("username");
-    String pwd = request.getParameter("pwd");
-    String email = request.getParameter("email");
-
-    // 判空
-    if(username == null || username.trim().isEmpty()){
-        out.print("用户名不能为空");
-        return;
-    }
-    username = username.trim();
-
-    // 业务判断
-    if(username.startsWith("user")){
-        out.print("<h3>该用户名已被注册</h3>");
-        out.print("客户端提交的控件信息：<br/>");
-        out.print("用户名：" + username + "<br/>");
-        out.print("密码：" + pwd + "<br/>");
-        out.print("邮箱：" + email + "<br/>");
-    }else if("admin".equals(username)){
-        out.print("<h3>欢迎您，管理员</h3>");
-    }else{
-        out.print("<h3>注册成功</h3>");
+String msg = (String) request.getAttribute("msg");
+String type = (String) request.getAttribute("type");
+if(msg != null){
+    String color = "red";
+    if("success".equals(type)){
+        color = "green";
     }
 %>
+    <p style="color:<%=color%>; text-align:center; font-size:14px;"><%=msg%></p>
+<%
+}
+%>
+
+
+    <form action="register" method="post">
+        <div class="item">
+            <label>用户名</label>
+            <input type="text" name="username" placeholder="请输入用户名" 
+                   value="<%= request.getAttribute("username")!=null?request.getAttribute("username"):"" %>">
+        </div>
+        <div class="item">
+            <label>密码</label>
+            <input type="password" name="password" placeholder="请输入密码">
+        </div>
+        <div class="item">
+            <label>确认密码</label>
+            <input type="password" name="repassword" placeholder="请再次输入密码">
+        </div>
+        <button class="common_bt" type="submit">注册</button>
+    </form>
+
+    <a href="login.html" class="register-link">已有账号？去登录</a>
+</div>
 </body>
 </html>
